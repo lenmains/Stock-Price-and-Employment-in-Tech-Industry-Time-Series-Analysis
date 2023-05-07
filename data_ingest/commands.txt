@@ -1,0 +1,3 @@
+hdfs dfs -put meta.csv
+hdfs dfs -put amzn.csv
+hdfs dfs -put employment.csv

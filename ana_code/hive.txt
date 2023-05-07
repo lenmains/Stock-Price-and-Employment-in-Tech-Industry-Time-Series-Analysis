@@ -1,0 +1,7 @@
+use sl8052_nyu_edu;
+
+CREATE EXTERNAL TABLE emp(year string, employment double) ROW FORMAT DELIMITED FIELDS TERMINATED BY ',' STORED AS TEXTFILE location  'hdfs://nyu-dataproc-m/user/sl8052_nyu_edu/emp';
+
+create table year_ep as select year, avg(employment) from t_ep group by year;
+
+INSERT OVERWRITE DIRECTORY 'hdfs://nyu-dataproc-m/user/sl8052_nyu_edu/output' ROW FORMAT DELIMITED FIELDS TERMINATED BY ',' STORED AS TEXTFILE select * from year_ep;
